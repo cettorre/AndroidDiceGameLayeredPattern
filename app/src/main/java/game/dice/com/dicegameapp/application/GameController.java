@@ -2,6 +2,7 @@ package game.dice.com.dicegameapp.application;
 
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 import game.dice.com.dicegameapp.domain.*;
 
@@ -12,6 +13,19 @@ public class GameController {
 	//added field
 	private Game game;
 
+	private static ArrayList<ResultsRecord> results=new ArrayList<>();
+
+	public ResultsRecord createRecord(String playerNAme, int numberOfRolls, double percentageVictory){
+		return new ResultsRecord(playerNAme,numberOfRolls,percentageVictory);
+	}
+
+	public void addRecordToList(ResultsRecord resultsRecord){
+		results.add(resultsRecord);
+	}
+
+	public ArrayList<ResultsRecord> getResults() {
+		return results;
+	}
 
 	public GameController() {}
 

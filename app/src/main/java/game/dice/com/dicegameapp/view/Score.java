@@ -3,6 +3,7 @@ package game.dice.com.dicegameapp.view;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ public class Score extends AppCompatActivity {
 
         initComponents();
 
-        rolledTimes.setText("Dices have rolled the dices "+String.valueOf(gameController.getRolledTimes())+" times");
+        rolledTimes.setText("You have rolled the dices "+String.valueOf(gameController.getRolledTimes())+" times");
 
         victories.setText(String.valueOf(gameController.getPlayerRanking())+"% of victories ");
 
@@ -34,7 +35,16 @@ public class Score extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(Score.this, Dashboard.class);
                 startActivity(i);
+
+                //TODO
+                gameController.addRecordToList(
+                        gameController.createRecord(
+                                gameController.getPlayerName(),
+                                gameController.getRolledTimes(),
+                                gameController.getPlayerRanking()));
                 gameController.resetGamesList();
+                Log.e("results_list",gameController.getResults().toString());
+
             }
         });
     }
