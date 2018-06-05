@@ -1,5 +1,7 @@
 package game.dice.com.dicegameapp.application;
 
+import android.util.Log;
+
 import java.util.List;
 import game.dice.com.dicegameapp.domain.*;
 
@@ -11,38 +13,32 @@ public class GameController {
 	private Game game;
 
 
-	public GameController() {
+	public GameController() {}
 
-	}
-
-	public static Player getPlayer() {
+	public Player getPlayer() {
 		return player;
 	}
 
 	public void createPlayer(String name) {
 		this.player = new Player(name);
+		Log.e("created player", "created");
 	}
 
-	public String getPlayerName() {
-		return player.getName();
-	}
+	public String getPlayerName() {	return player.getName();}
 
 	public boolean playGame() {
-		 game = new Game();
+	    game = new Game();
 		boolean hasWon = game.playGame();
 		player.addGame(game);
+		Log.e("game", game.toString());
 		return hasWon;
 	}
 	//added methods
-	public int getDice1Value(){
+	public int getDice1Value(){	return game.getDice1();}
 
-		return game.getDice1();
-	}
+	public int getDice2Value(){	return game.getDice2();}
 
-	public int getDice2Value(){
-
-		return game.getDice2();
-	}
+	public void resetGamesList(){player.resetGamesList();}
 
 	public String getPlayerGamesToString() {
 		String text = "";
@@ -62,8 +58,12 @@ public class GameController {
 			if (game.hasWon())
 				wins++;
 		}
-		return wins / games.size();
+		Log.e("added", games.toString());
+		return wins / games.size()*100;
 	}
+
+	//added method
+	public int getRolledTimes(){ return player.getAllGames().size();}
 
 	@Override
 	public String toString() {

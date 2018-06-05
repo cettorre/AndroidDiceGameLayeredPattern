@@ -1,6 +1,9 @@
 package game.dice.com.dicegameapp.domain;
 
+import android.util.Log;
+
 public class Game {
+
 
 	private Dice dice1=new Dice();
 	private Dice dice2=new Dice();
@@ -12,7 +15,7 @@ public class Game {
 	public boolean playGame() {
 		dice1.rollDice();
 		dice2.rollDice();
-		
+
 		return hasWon();
 	}
 	
@@ -31,5 +34,13 @@ public class Game {
 
 	public int getDice2() {
 		return dice2.getValue();
+	}
+
+	@Override
+	public String toString() {
+		return "Game{" +
+				"dice1=" + dice1 +
+				", dice2=" + dice2 +
+				'}';
 	}
 }

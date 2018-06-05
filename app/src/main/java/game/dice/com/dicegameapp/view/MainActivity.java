@@ -36,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
             playerName=etName.getText().toString();
-            gameController.createPlayer(playerName);              //  Log.e("player_name",playerName);Log.e("controller",gameController.toString());
+
+            gameController.createPlayer(playerName);
+
             Intent i = new Intent(MainActivity.this, Dashboard.class);
             startActivity(i);
 

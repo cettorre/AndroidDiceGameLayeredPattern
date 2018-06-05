@@ -1,6 +1,7 @@
 package game.dice.com.dicegameapp.view;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -34,8 +35,6 @@ public class GameView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                gameController.createPlayer(gameController.getPlayerName());
-
                 hasWon=gameController.playGame();
 
                 if (hasWon){
@@ -47,42 +46,16 @@ public class GameView extends AppCompatActivity {
                 tvDice1.setText(String.valueOf(gameController.getDice1Value()));
 
                 tvDice2.setText(String.valueOf(gameController.getDice2Value()));
-
-
-
-                /*
-
-                Player pl1 = new Player("player1");
-                Game game1 = new Game();
-
-                pl1.addGame(game1);
-                game1.playGame();
-
-                if (game1.hasWon()){
-                    tvResult.setText("Congraturations you won!");
-                }else {
-                    tvResult.setText("You have lost");
-                }
-
-                */
-
             }
         });
 
-    btnEndGame.setOnClickListener(new View.OnClickListener() {
+        btnEndGame.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent i = new Intent(GameView.this, Score.class);
             startActivity(i);
-        }
-    });
-
-
-
-
-
-
-
+            }
+        });
     }
 
     public void initComponents(){

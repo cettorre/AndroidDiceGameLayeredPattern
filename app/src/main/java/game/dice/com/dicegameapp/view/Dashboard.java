@@ -14,6 +14,7 @@ public class Dashboard extends AppCompatActivity {
 
     String name;
     Button btn_new_game;
+    Button btn_show_stats;
     TextView playerName;
     GameController gameController= new GameController();
 
@@ -23,12 +24,9 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        btn_new_game=findViewById(R.id.btn_new_game);
-        playerName=findViewById(R.id.player_name);
+        initComponents();
 
-        //TODO use non static instance
         name=gameController.getPlayerName();
-
 
         playerName.setText("Hello "+name);
 
@@ -41,10 +39,19 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
+        btn_show_stats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Dashboard.this, Statistics.class);
+                startActivity(i);
+            }
+        });
 
+    }
 
-
-
-
+    public void initComponents(){
+        btn_new_game=findViewById(R.id.btn_new_game);
+        btn_show_stats=findViewById(R.id.btn_show_stats);
+        playerName=findViewById(R.id.player_name);
     }
 }
