@@ -6,11 +6,17 @@ import game.dice.com.dicegameapp.domain.*;
 
 public class GameController {
 
-	private Player player;
+	private static Player player;
+	//added field
+	private Game game;
 
 
 	public GameController() {
 
+	}
+
+	public static Player getPlayer() {
+		return player;
 	}
 
 	public void createPlayer(String name) {
@@ -22,10 +28,20 @@ public class GameController {
 	}
 
 	public boolean playGame() {
-		Game game = new Game();
+		 game = new Game();
 		boolean hasWon = game.playGame();
 		player.addGame(game);
 		return hasWon;
+	}
+	//added methods
+	public int getDice1Value(){
+
+		return game.getDice1();
+	}
+
+	public int getDice2Value(){
+
+		return game.getDice2();
 	}
 
 	public String getPlayerGamesToString() {

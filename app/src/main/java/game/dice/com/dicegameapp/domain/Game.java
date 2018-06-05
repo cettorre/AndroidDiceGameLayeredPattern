@@ -24,4 +24,12 @@ public class Game {
 		return getSumDices()==7;
 	}
 
+	//added methods
+	public int getDice1() {
+		return dice1.getValue();
+	}
+
+	public int getDice2() {
+		return dice2.getValue();
+	}
 }

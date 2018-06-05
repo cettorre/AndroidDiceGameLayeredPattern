@@ -7,7 +7,7 @@
     tools:context=".view.GameView">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_play"
         android:layout_width="262dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.069" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_dice1"
         android:textSize="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         app:layout_constraintVertical_bias="0.319" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_dice2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -56,7 +56,7 @@
         app:layout_constraintVertical_bias="0.319" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_result"
         android:textSize="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btn_end_game"
         android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

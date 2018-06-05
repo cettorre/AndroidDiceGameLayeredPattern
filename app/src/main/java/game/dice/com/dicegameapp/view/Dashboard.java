@@ -1,5 +1,6 @@
 package game.dice.com.dicegameapp.view;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,7 @@ public class Dashboard extends AppCompatActivity {
     String name;
     Button btn_new_game;
     TextView playerName;
-   // GameController gameController= new GameController();
+    GameController gameController= new GameController();
 
 
     @Override
@@ -26,9 +27,7 @@ public class Dashboard extends AppCompatActivity {
         playerName=findViewById(R.id.player_name);
 
         //TODO use non static instance
-        name=MainActivity.gameController.getPlayerName();
-        //name=gameController.getPlayerName();//Player.getName()' on a null object reference
-
+        name=gameController.getPlayerName();
 
 
         playerName.setText("Hello "+name);
@@ -37,7 +36,8 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                Intent i = new Intent(Dashboard.this, GameView.class);
+                startActivity(i);
             }
         });
 
