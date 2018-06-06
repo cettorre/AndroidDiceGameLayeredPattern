@@ -38,7 +38,7 @@ public class GameView extends AppCompatActivity {
                 hasWon=gameController.playGame();
 
                 if (hasWon){
-                    tvResult.setText("Congraturations you win!");
+                    tvResult.setText("Congratulations you win!");
                 }else {
                     tvResult.setText("You have lost. Try Again.");
                 }
