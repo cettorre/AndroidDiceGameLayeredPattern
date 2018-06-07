@@ -13,6 +13,8 @@ public class GameController {
 
 	private static Player player;
 	//added field
+
+    //TODO eliminar game. Use class Player instead
 	private Game game;
 
 	private static ArrayList<ResultsRecordDTO> results=new ArrayList<>();
@@ -65,7 +67,7 @@ public class GameController {
 		return text;
 	}
 
-	//TODO puede moverse a player
+	//TODO moverse a player y luego llamar desde controller
 	public double getPlayerRanking() {
 		List<Game> games = player.getAllGames();
 

@@ -10,12 +10,11 @@ public class ResultsRecordDTO {
     private double percentageOfVictories;
     GameController gameController= new GameController();
 
-
     //TODO PEDIR INFO A PLAYER
     public ResultsRecordDTO(Player player) {
         this.playerName = player.getName();
         this.numberOfRolls = player.getAllGames().size();
-        this.percentageOfVictories = gameController.getPlayerRanking();
+        this.percentageOfVictories = gameController.getPlayerRanking();//pedir a player! cambiar metodo a player
     }
 
     public String getPlayerName() {
@@ -25,7 +24,6 @@ public class ResultsRecordDTO {
     public int getNumberOfRolls() {
         return numberOfRolls;
     }
-
 
     public double getPercentageOfVictories() {
         return percentageOfVictories;
