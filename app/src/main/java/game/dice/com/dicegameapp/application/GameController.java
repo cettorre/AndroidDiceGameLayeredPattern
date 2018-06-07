@@ -4,6 +4,8 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import game.dice.com.dicegameapp.application.dto.ResultsRecordDTO;
 import game.dice.com.dicegameapp.domain.*;
 
 
@@ -13,17 +15,17 @@ public class GameController {
 	//added field
 	private Game game;
 
-	private static ArrayList<ResultsRecord> results=new ArrayList<>();
+	private static ArrayList<ResultsRecordDTO> results=new ArrayList<>();
 
-	public ResultsRecord createRecord(String playerNAme, int numberOfRolls, double percentageVictory){
-		return new ResultsRecord(playerNAme,numberOfRolls,percentageVictory);
+	public ResultsRecordDTO createRecord(){
+		return new ResultsRecordDTO(player);
 	}
 
-	public void addRecordToList(ResultsRecord resultsRecord){
-		results.add(resultsRecord);
+	public void addRecordToList(ResultsRecordDTO resultsRecordDTO){
+		results.add(resultsRecordDTO);
 	}
 
-	public ArrayList<ResultsRecord> getResults() {
+	public ArrayList<ResultsRecordDTO> getResults() {
 		return results;
 	}
 
@@ -47,9 +49,8 @@ public class GameController {
 		Log.e("game", game.toString());
 		return hasWon;
 	}
-	//added methods
+	//TODO use player instead of game
 	public int getDice1Value(){	return game.getDice1();}
-
 	public int getDice2Value(){	return game.getDice2();}
 
 	public void resetGamesList(){player.resetGamesList();}
@@ -64,6 +65,7 @@ public class GameController {
 		return text;
 	}
 
+	//TODO puede moverse a player
 	public double getPlayerRanking() {
 		List<Game> games = player.getAllGames();
 

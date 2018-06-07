@@ -8,20 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import java.util.List;
-
 import game.dice.com.dicegameapp.R;
-import game.dice.com.dicegameapp.domain.ResultsRecord;
+import game.dice.com.dicegameapp.application.dto.ResultsRecordDTO;
 
-import static game.dice.com.dicegameapp.R.layout.record_adapter;
-
-public class StatsAdapter  extends ArrayAdapter<ResultsRecord> {
+public class StatsAdapter  extends ArrayAdapter<ResultsRecordDTO> {
 
     private Context context;
-    private List<ResultsRecord> stats;
+    private List<ResultsRecordDTO> stats;
 
-    public StatsAdapter(@NonNull Context context, List<ResultsRecord> stats) {
+    public StatsAdapter(@NonNull Context context, List<ResultsRecordDTO> stats) {
         super(context, R.layout.record_adapter,stats);
         this.context = context;
         this.stats = stats;
@@ -31,7 +27,6 @@ public class StatsAdapter  extends ArrayAdapter<ResultsRecord> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        //1.- cargar en memmoria el layout message_item
         LayoutInflater inflater =
                 (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -43,9 +38,7 @@ public class StatsAdapter  extends ArrayAdapter<ResultsRecord> {
 
         name.setText(this.stats.get(position).getPlayerName());
         rolledTimes.setText(String.valueOf(this.stats.get(position).getNumberOfRolls()));
-        victories.setText(String.valueOf(this.stats.get(position).getPercentageOfVictories()));
-
-//        rolledTimes.setText(this.messages.get(position).getMessage());
+        victories.setText(String.format("%.2f",(this.stats.get(position).getPercentageOfVictories()))+"%");
 
         return messageView;
     }

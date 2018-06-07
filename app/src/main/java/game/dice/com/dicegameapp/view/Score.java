@@ -7,10 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import game.dice.com.dicegameapp.R;
 import game.dice.com.dicegameapp.application.GameController;
-import game.dice.com.dicegameapp.domain.Game;
+import game.dice.com.dicegameapp.application.dto.ResultsRecordDTO;
 
 public class Score extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class Score extends AppCompatActivity {
 
         rolledTimes.setText("You have rolled the dices "+String.valueOf(gameController.getRolledTimes())+" times");
 
-        victories.setText(String.valueOf(gameController.getPlayerRanking())+"% of victories ");
+        victories.setText(String.format("%.2f",(gameController.getPlayerRanking()))+"% of victories ");
 
         btnDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,12 +35,10 @@ public class Score extends AppCompatActivity {
                 Intent i = new Intent(Score.this, Dashboard.class);
                 startActivity(i);
 
-                //TODO
-                gameController.addRecordToList(
-                        gameController.createRecord(
-                                gameController.getPlayerName(),
-                                gameController.getRolledTimes(),
-                                gameController.getPlayerRanking()));
+                //simplified passing methods to ResultRecord constructor
+                ResultsRecordDTO record=gameController.createRecord();
+                gameController.addRecordToList(record);
+
                 gameController.resetGamesList();
                 Log.e("results_list",gameController.getResults().toString());
 

@@ -6,15 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import game.dice.com.dicegameapp.R;
 import game.dice.com.dicegameapp.application.GameController;
 
 public class Dashboard extends AppCompatActivity {
 
     String name;
-    Button btn_new_game;
-    Button btn_show_stats;
+    Button btnNewGame;
+    Button btnShowStats;
+    Button btnChangePlayer;
     TextView playerName;
     GameController gameController= new GameController();
 
@@ -30,7 +30,7 @@ public class Dashboard extends AppCompatActivity {
 
         playerName.setText("Hello "+name);
 
-        btn_new_game.setOnClickListener(new View.OnClickListener() {
+        btnNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -39,7 +39,7 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        btn_show_stats.setOnClickListener(new View.OnClickListener() {
+        btnShowStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Dashboard.this, Statistics.class);
@@ -47,11 +47,20 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
+        btnChangePlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Dashboard.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     public void initComponents(){
-        btn_new_game=findViewById(R.id.btn_new_game);
-        btn_show_stats=findViewById(R.id.btn_show_stats);
+        btnNewGame =findViewById(R.id.btn_new_game);
+        btnShowStats =findViewById(R.id.btn_show_stats);
         playerName=findViewById(R.id.player_name);
+        btnChangePlayer=findViewById(R.id.btn_change_player);
     }
 }
