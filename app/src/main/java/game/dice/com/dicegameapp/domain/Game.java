@@ -11,8 +11,9 @@ public class Game {
 	public Game(){
 		
 	}
-	
-	public boolean playGame() {
+
+	//todo move to player
+	public boolean rollDices() {
 		dice1.rollDice();
 		dice2.rollDice();
 
@@ -27,7 +28,7 @@ public class Game {
 		return getSumDices()==7;
 	}
 
-	//added methods
+	//moved methods to player
 	public int getDice1() {
 		return dice1.getValue();
 	}

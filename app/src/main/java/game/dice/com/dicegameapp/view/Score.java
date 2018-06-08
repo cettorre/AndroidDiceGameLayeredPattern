@@ -32,7 +32,7 @@ public class Score extends AppCompatActivity {
 
         rolledTimes.setText("You have rolled the dices "+String.valueOf(gameController.getRolledTimes())+" times");
 
-        victories.setText(String.format("%.2f",(gameController.getPlayerRanking()))+"% of victories ");
+        victories.setText(String.format("%.2f",(gameController.getPlayer().getPlayerRanking()))+"% of victories ");
 
         btnDashboard.setOnClickListener(new View.OnClickListener() {
             @Override

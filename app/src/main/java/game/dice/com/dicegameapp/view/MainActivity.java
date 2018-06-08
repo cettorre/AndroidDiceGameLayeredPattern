@@ -12,7 +12,7 @@ import game.dice.com.dicegameapp.application.GameController;
 public class MainActivity extends AppCompatActivity {
 
     EditText etName;
-    Button button;
+    Button btnGoToDashBoard;
     String playerName;
     GameController gameController= new GameController();
 
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         initComponents();
 
-        button.setOnClickListener(new View.OnClickListener() {
+        btnGoToDashBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initComponents(){
         etName=findViewById(R.id.et_name);
-        button=findViewById(R.id.btn_main_to_dashboard);
+        btnGoToDashBoard =findViewById(R.id.btn_main_to_dashboard);
     }
 
 }

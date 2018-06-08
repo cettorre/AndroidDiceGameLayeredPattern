@@ -14,7 +14,7 @@ public class GameController {
 	private static Player player;
 	//added field
 
-    //TODO eliminar game. Use class Player instead
+    //TODO eliminar game. Use class Player instead.?
 	private Game game;
 
 	private static ArrayList<ResultsRecordDTO> results=new ArrayList<>();
@@ -44,41 +44,21 @@ public class GameController {
 
 	public String getPlayerName() {	return player.getName();}
 
+
+	//TODO use player instead of game
 	public boolean playGame() {
-	    game = new Game();
-		boolean hasWon = game.playGame();
-		player.addGame(game);
-		Log.e("game", game.toString());
+	    game = new Game();//use player instead
+		boolean hasWon = game.rollDices();
+		player.addGame(game);//player.addGame(player.getGame());
+	//	Log.e("game", game.toString());
+	//	return player.playGame();//
 		return hasWon;
 	}
-	//TODO use player instead of game
-	public int getDice1Value(){	return game.getDice1();}
-	public int getDice2Value(){	return game.getDice2();}
+	//TODO use player instead of game OK
+	public int getDice1Value(){	return game.getDice1();}//use player instead
+	public int getDice2Value(){	return game.getDice2();}//use player instead
 
 	public void resetGamesList(){player.resetGamesList();}
-
-	public String getPlayerGamesToString() {
-		String text = "";
-		List<Game> games = player.getAllGames();
-
-		for (Game game : games) {
-			text += "SUMA: " + game.getSumDices() + " RESULTAT: " + game.hasWon();
-		}
-		return text;
-	}
-
-	//TODO moverse a player y luego llamar desde controller
-	public double getPlayerRanking() {
-		List<Game> games = player.getAllGames();
-
-		double wins = 0.0;
-		for (Game game : games) {
-			if (game.hasWon())
-				wins++;
-		}
-		Log.e("added", games.toString());
-		return wins / games.size()*100;
-	}
 
 	//added method
 	public int getRolledTimes(){ return player.getAllGames().size();}
