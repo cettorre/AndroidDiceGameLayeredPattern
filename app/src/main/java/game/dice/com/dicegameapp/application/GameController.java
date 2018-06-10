@@ -1,21 +1,17 @@
 package game.dice.com.dicegameapp.application;
 
 import android.util.Log;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import game.dice.com.dicegameapp.application.dto.ResultsRecordDTO;
 import game.dice.com.dicegameapp.domain.*;
 
 
 public class GameController {
 
-	private static Player player;
-	//added field
+	public GameController() {}
 
-    //TODO eliminar game. Use class Player instead.?
-	private Game game;
+
+	private static Player player;
 
 	private static ArrayList<ResultsRecordDTO> results=new ArrayList<>();
 
@@ -31,7 +27,7 @@ public class GameController {
 		return results;
 	}
 
-	public GameController() {}
+
 
 	public Player getPlayer() {
 		return player;
@@ -44,23 +40,18 @@ public class GameController {
 
 	public String getPlayerName() {	return player.getName();}
 
-
-	//TODO use player instead of game
 	public boolean playGame() {
-	    game = new Game();//use player instead
-		boolean hasWon = game.rollDices();
-		player.addGame(game);//player.addGame(player.getGame());
-	//	Log.e("game", game.toString());
-	//	return player.playGame();//
-		return hasWon;
+        boolean hasWon = player.rollDices();
+        player.addGame(player.getGame());
+	    return hasWon;
 	}
-	//TODO use player instead of game OK
-	public int getDice1Value(){	return game.getDice1();}//use player instead
-	public int getDice2Value(){	return game.getDice2();}//use player instead
+
+	public int getDice1Value(){	return player.getDice1Value();}
+
+	public int getDice2Value(){	return player.getDice2Value();}
 
 	public void resetGamesList(){player.resetGamesList();}
 
-	//added method
 	public int getRolledTimes(){ return player.getAllGames().size();}
 
 	@Override

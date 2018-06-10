@@ -1,40 +1,29 @@
 package game.dice.com.dicegameapp.domain;
 
-import android.util.Log;
-
 public class Game {
 
+	private Dice dice1;
+	private Dice dice2;
 
-	private Dice dice1=new Dice();
-	private Dice dice2=new Dice();
-	
 	public Game(){
-		
+		 dice1=new Dice();
+		 dice2=new Dice();
 	}
 
-	//todo move to player
-	public boolean rollDices() {
-		dice1.rollDice();
-		dice2.rollDice();
-
-		return hasWon();
-	}
-	
 	public int getSumDices(){
-		return dice1.getValue()+dice2.getValue();	
+		return dice1.getValue()+dice2.getValue();
 	}
 	
 	public boolean hasWon() {
 		return getSumDices()==7;
 	}
 
-	//moved methods to player
-	public int getDice1() {
-		return dice1.getValue();
+	public Dice getDice1() {
+		return dice1;
 	}
 
-	public int getDice2() {
-		return dice2.getValue();
+	public Dice getDice2() {
+		return dice2;
 	}
 
 	@Override
