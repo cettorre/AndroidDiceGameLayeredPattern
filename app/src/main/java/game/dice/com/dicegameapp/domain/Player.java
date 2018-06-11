@@ -1,16 +1,27 @@
 package game.dice.com.dicegameapp.domain;
 
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import game.dice.com.dicegameapp.view.Dashboard;
+import game.dice.com.dicegameapp.view.MainActivity;
 
 public class Player {
 
 	private String name;
 
-	Game game;
+	private Game game;
+	private Result result;
 
-	List<Game> games=new ArrayList<>();
+	//TODO
+	//cada player tiene una lista de resultados
+    //Lista de resultados. Cada Resultado tiene una lista de games.
+	private ArrayList<Game> games=new ArrayList<>();//change
+	//new list
+	private ArrayList<Result> results=new ArrayList<>();
 	
 	public Player(String name){		
 		this.name=name;
@@ -21,38 +32,53 @@ public class Player {
 	}
 	
 	public void addGame(Game game){
-		games.add(game);
+		//comprovar que no sea null
+
+		try{
+			if (game==null) throw new Exception();
+			games.add(game);//change
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
     }
 
-	public List<Game> getAllGames() {return games;}
+	public List<Game> getAllGames() {return games;}//change
 
-	public void resetGamesList(){games.clear();}
+	public void resetGamesList(){games.clear();}//change
 
 	public Game getGame() {
-		return game;
+		return game;//change
 	}
 
 	public boolean rollDices() {
-		game= new Game();
-		game.getDice1().rollDice();
-		game.getDice2().rollDice();
+		game= new Game();//change
+		game.getDice1().rollDice();//change
+		game.getDice2().rollDice();//change
 
-		return game.hasWon();
+		//new version
+		games.add(game);
+		result=new Result(games);
+		results.add(result);
+		//---
+
+		return game.hasWon();//change to new version using Result obj
+		//return result.getGames().get(results.size()-1).hasWon();//modificar texto en pantalla metodo hasWon del objeto en la lista
 	}
 
     public int getDice1Value() { return game.getDice1().getValue();}
 
     public int getDice2Value() {return game.getDice2().getValue();}
 
-		public double getPlayerRanking() {
-			double wins = 0.0;
-			for (Game game : games) {
-				if (game.hasWon()) {
-					wins++;
-				}
-			}
-			return wins / games.size()*100;
+	public double getPlayerRanking() {
+		double wins = 0.0;
+		for (Game game : games) {
+			if (game.hasWon()) {
+				wins++;
+	 		}
 		}
-
+	return wins / games.size()*100;
 	}
+
+}
 

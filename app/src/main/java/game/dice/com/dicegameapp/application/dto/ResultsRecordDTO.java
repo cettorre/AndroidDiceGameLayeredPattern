@@ -8,12 +8,11 @@ public class ResultsRecordDTO {
     private String playerName;
     private int numberOfRolls;
     private double percentageOfVictories;
-    GameController gameController= new GameController();
 
     public ResultsRecordDTO(Player player) {
         this.playerName = player.getName();
         this.numberOfRolls = player.getAllGames().size();
-        this.percentageOfVictories = player.getPlayerRanking();//pedir a player! cambiar metodo a player
+        this.percentageOfVictories = player.getPlayerRanking();
     }
 
     public String getPlayerName() {
@@ -28,12 +27,4 @@ public class ResultsRecordDTO {
         return percentageOfVictories;
     }
 
-    @Override
-    public String toString() {
-        return "ResultsRecordDTO{" +
-                "playerName='" + playerName + '\'' +
-                ", numberOfRolls=" + numberOfRolls +
-                ", percentageOfVictories=" + percentageOfVictories +
-                '}';
-    }
 }

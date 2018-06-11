@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import game.dice.com.dicegameapp.R;
 import game.dice.com.dicegameapp.application.GameController;
 
@@ -29,11 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
             playerName=etName.getText().toString();
 
-            gameController.createPlayer(playerName);
-
-            Intent i = new Intent(MainActivity.this, Dashboard.class);
-            startActivity(i);
-
+            if(!android.text.TextUtils.isDigitsOnly(playerName.trim())&&playerName!=null) {
+                gameController.createPlayer(playerName);
+                Intent i = new Intent(MainActivity.this, Dashboard.class);
+                startActivity(i);
+            }else {
+                Toast t= Toast.makeText(MainActivity.this,"please enter a valid player name",Toast.LENGTH_LONG);
+                t.show();
+            }
             }
         });
 

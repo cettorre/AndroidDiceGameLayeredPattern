@@ -12,7 +12,8 @@ public class GameController {
 
 
 	private static Player player;
-
+	//TODO
+	//eliminar
 	private static ArrayList<ResultsRecordDTO> results=new ArrayList<>();
 
 	public ResultsRecordDTO createRecord(){
@@ -23,11 +24,11 @@ public class GameController {
 		results.add(resultsRecordDTO);
 	}
 
+	//
 	public ArrayList<ResultsRecordDTO> getResults() {
+		//generar la lista a partir de Player
 		return results;
 	}
-
-
 
 	public Player getPlayer() {
 		return player;
@@ -54,10 +55,4 @@ public class GameController {
 
 	public int getRolledTimes(){ return player.getAllGames().size();}
 
-	@Override
-	public String toString() {
-		return "GameController{" +
-				"player=" + player +
-				'}';
-	}
 }
