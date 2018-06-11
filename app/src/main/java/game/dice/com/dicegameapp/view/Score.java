@@ -48,17 +48,6 @@ public class Score extends AppCompatActivity {
                 Log.e("results_list",gameController.getResults().toString());
 
 
-              //TODO testing DB
-              SQLiteDatabase mDb = DbUtil.getDbConnection(getApplicationContext());
-              Cursor mCursor= DbUtil.getCursor(Score.this);
-              ContentValues cv = DbUtil.getContentValues();
-              cv.put(DbHelper.COL_PLAYER,"player2");
-
-              mCursor.moveToFirst();
-          //    Log.e("resulr_db",mCursor.getString(mCursor.getColumnIndexOrThrow(DbHelper.COL_PLAYER)));//index out of bounds
-
-
-
             }
         });
     }

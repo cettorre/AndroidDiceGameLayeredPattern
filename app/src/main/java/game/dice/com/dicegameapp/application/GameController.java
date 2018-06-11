@@ -42,17 +42,17 @@ public class GameController {
 	public String getPlayerName() {	return player.getName();}
 
 	public boolean playGame() {
-        boolean hasWon = player.rollDices();
-        player.addGame(player.getGame());
+        boolean hasWon = player.addResult();
+      //  player.addGame(player.getCurrentResult().getCurrentGame());//fixed add x2
 	    return hasWon;
 	}
 
-	public int getDice1Value(){	return player.getDice1Value();}
+	public int getDice1Value(){	return player.getCurrentResult().getCurrentGame().getDice1().getValue();}
 
-	public int getDice2Value(){	return player.getDice2Value();}
+	public int getDice2Value(){	return player.getCurrentResult().getCurrentGame().getDice2().getValue();}
 
 	public void resetGamesList(){player.resetGamesList();}
 
-	public int getRolledTimes(){ return player.getAllGames().size();}
+	public int getRolledTimes(){ return player. getCurrentResult().getGames().size();}
 
 }

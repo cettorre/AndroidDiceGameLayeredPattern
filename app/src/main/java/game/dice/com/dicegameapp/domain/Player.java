@@ -1,6 +1,7 @@
 package game.dice.com.dicegameapp.domain;
 
 
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -12,17 +13,15 @@ import game.dice.com.dicegameapp.view.MainActivity;
 public class Player {
 
 	private String name;
-
-	private Game game;
-	private Result result;
-
+	private ArrayList<Result> results=new ArrayList<>();
 	//TODO
 	//cada player tiene una lista de resultados
-    //Lista de resultados. Cada Resultado tiene una lista de games.
-	private ArrayList<Game> games=new ArrayList<>();//change
-	//new list
-	private ArrayList<Result> results=new ArrayList<>();
-	
+	//Lista de resultados. Cada Resultado tiene una lista de games.
+	//todo eliminar
+	//private Result result;
+//	private Game game;
+//	private ArrayList<Game> games=new ArrayList<>();//todo error inside method 100% teoria
+
 	public Player(String name){		
 		this.name=name;
 	}
@@ -32,52 +31,52 @@ public class Player {
 	}
 	
 	public void addGame(Game game){
-		//comprovar que no sea null
-
 		try{
 			if (game==null) throw new Exception();
-			games.add(game);//change
+			getCurrentResult().getGames().add(game);//change
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-
     }
 
-	public List<Game> getAllGames() {return games;}//change
+	public List<Game> getAllGames() {return getCurrentResult().getGames();}//change
 
-	public void resetGamesList(){games.clear();}//change
+	public void resetGamesList(){getCurrentResult().getGames().clear();}//change
 
-	public Game getGame() {
-		return game;//change
-	}
+	public void rollTheDices(){
 
-	public boolean rollDices() {
-		game= new Game();//change
+		Game game= new Game();//change
 		game.getDice1().rollDice();//change
 		game.getDice2().rollDice();//change
+		addGame(game);
 
-		//new version
-		games.add(game);
-		result=new Result(games);
-		results.add(result);
-		//---
-
-		return game.hasWon();//change to new version using Result obj
-		//return result.getGames().get(results.size()-1).hasWon();//modificar texto en pantalla metodo hasWon del objeto en la lista
 	}
 
-    public int getDice1Value() { return game.getDice1().getValue();}
+	public boolean addResult() {
+	// variable global games error 100%->static ok teoria
+		Result result=new Result();
+		results.add(result);
+		rollTheDices();
+		Log.e("results",results.toString());
+		return getCurrentResult().getCurrentGame().hasWon();
+	}
 
-    public int getDice2Value() {return game.getDice2().getValue();}
+	public ArrayList<Result> getResults() {
+		return results;
+	}
+
+	public Result getCurrentResult(){
+		return getResults().get(results.size()-1);
+	}
 
 	public double getPlayerRanking() {
 		double wins = 0.0;
-		for (Game game : games) {
+		for (Game game : getCurrentResult().getGames()) {
 			if (game.hasWon()) {
 				wins++;
 	 		}
 		}
-	return wins / games.size()*100;
+	return wins / getCurrentResult().getGames().size()*100;
 	}
 
 }
