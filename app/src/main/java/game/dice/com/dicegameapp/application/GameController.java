@@ -10,24 +10,18 @@ public class GameController {
 
 	public GameController() {}
 
-
 	private static Player player;
-	//TODO
-	//eliminar
-	private static ArrayList<ResultsRecordDTO> results=new ArrayList<>();
 
 	public ResultsRecordDTO createRecord(){
 		return new ResultsRecordDTO(player);
 	}
 
 	public void addRecordToList(ResultsRecordDTO resultsRecordDTO){
-		results.add(resultsRecordDTO);
+		player.getResultsRecordsList().add(resultsRecordDTO);
 	}
 
-	//
 	public ArrayList<ResultsRecordDTO> getResults() {
-		//generar la lista a partir de Player
-		return results;
+		return player.getResultsRecordsList();
 	}
 
 	public Player getPlayer() {
@@ -43,7 +37,6 @@ public class GameController {
 
 	public boolean playGame() {
         boolean hasWon = player.addResult();
-      //  player.addGame(player.getCurrentResult().getCurrentGame());//fixed add x2
 	    return hasWon;
 	}
 

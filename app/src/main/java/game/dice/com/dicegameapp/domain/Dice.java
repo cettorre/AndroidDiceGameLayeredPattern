@@ -18,11 +18,4 @@ public class Dice {
 	public int getValue() {
 		return value;
 	}
-
-	@Override
-	public String toString() {
-		return "Dice{" +
-				"value=" + value +
-				'}';
-	}
 }

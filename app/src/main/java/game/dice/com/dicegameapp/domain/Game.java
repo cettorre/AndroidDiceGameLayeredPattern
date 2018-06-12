@@ -25,12 +25,4 @@ public class Game {
 	public Dice getDice2() {
 		return dice2;
 	}
-
-	@Override
-	public String toString() {
-		return "Game{" +
-				"dice1=" + dice1 +
-				", dice2=" + dice2 +
-				'}';
-	}
 }

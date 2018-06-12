@@ -2,34 +2,40 @@ package game.dice.com.dicegameapp.domain;
 
 
 import android.util.Log;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import game.dice.com.dicegameapp.view.Dashboard;
-import game.dice.com.dicegameapp.view.MainActivity;
+import game.dice.com.dicegameapp.application.dto.ResultsRecordDTO;
 
 public class Player {
 
 	private String name;
-	private ArrayList<Result> results=new ArrayList<>();
-	//TODO
 	//cada player tiene una lista de resultados
-	//Lista de resultados. Cada Resultado tiene una lista de games.
-	//todo eliminar
-	//private Result result;
-//	private Game game;
-//	private ArrayList<Game> games=new ArrayList<>();//todo error inside method 100% teoria
+	private ArrayList<Result> results=new ArrayList<>();
 
-	public Player(String name){		
+	private static ArrayList<ResultsRecordDTO> resultsRecordsList =new ArrayList<>();
+
+	public Player(String name){
 		this.name=name;
 	}
-	
+
 	public String getName(){
 		return name;
 	}
-	
+
+	public ArrayList<Result> getResults() {
+		return results;
+	}
+
+	public Result getCurrentResult(){
+		return getResults().get(results.size()-1);
+	}
+
+	public List<Game> getAllGames() {return getCurrentResult().getGames();}//change
+
+	public static ArrayList<ResultsRecordDTO> getResultsRecordsList() {
+		return resultsRecordsList;
+	}
+
 	public void addGame(Game game){
 		try{
 			if (game==null) throw new Exception();
@@ -39,17 +45,13 @@ public class Player {
 		}
     }
 
-	public List<Game> getAllGames() {return getCurrentResult().getGames();}//change
-
 	public void resetGamesList(){getCurrentResult().getGames().clear();}//change
 
 	public void rollTheDices(){
-
-		Game game= new Game();//change
-		game.getDice1().rollDice();//change
-		game.getDice2().rollDice();//change
+		Game game= new Game();
+		game.getDice1().rollDice();
+		game.getDice2().rollDice();
 		addGame(game);
-
 	}
 
 	public boolean addResult() {
@@ -59,14 +61,6 @@ public class Player {
 		rollTheDices();
 		Log.e("results",results.toString());
 		return getCurrentResult().getCurrentGame().hasWon();
-	}
-
-	public ArrayList<Result> getResults() {
-		return results;
-	}
-
-	public Result getCurrentResult(){
-		return getResults().get(results.size()-1);
 	}
 
 	public double getPlayerRanking() {
