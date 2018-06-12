@@ -1,6 +1,9 @@
 package game.dice.com.dicegameapp.view;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +13,8 @@ import android.widget.TextView;
 import game.dice.com.dicegameapp.R;
 import game.dice.com.dicegameapp.application.GameController;
 import game.dice.com.dicegameapp.application.dto.ResultsRecordDTO;
+import game.dice.com.dicegameapp.persistence.DbHelper;
+import game.dice.com.dicegameapp.persistence.DbUtil;
 
 public class Score extends AppCompatActivity {
 
@@ -37,10 +42,17 @@ public class Score extends AppCompatActivity {
 
                 //simplified passing methods to ResultRecord constructor
                 ResultsRecordDTO record=gameController.createRecord();
-                gameController.addRecordToList(record);
+                gameController.addRecordToList(record);//TODO
+                /*
+                * usar records que hay en player o dto
+                * añadirlo durante gameview
+                *
+                * */
 
                 gameController.resetGamesList();
                 Log.e("results_list",gameController.getResults().toString());
+
+
             }
         });
     }

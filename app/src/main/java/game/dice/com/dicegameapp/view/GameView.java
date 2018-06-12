@@ -41,6 +41,10 @@ public class GameView extends AppCompatActivity {
                 tvDice1.setText(String.valueOf(gameController.getDice1Value()));
 
                 tvDice2.setText(String.valueOf(gameController.getDice2Value()));
+
+
+
+
             }
         });
 

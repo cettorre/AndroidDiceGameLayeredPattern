@@ -10,18 +10,24 @@ public class GameController {
 
 	public GameController() {}
 
+
 	private static Player player;
+	//TODO
+	//situar
+	private static ArrayList<ResultsRecordDTO> results=new ArrayList<>();
 
 	public ResultsRecordDTO createRecord(){
 		return new ResultsRecordDTO(player);
 	}
 
 	public void addRecordToList(ResultsRecordDTO resultsRecordDTO){
-		player.getResultsRecordsList().add(resultsRecordDTO);
+		results.add(resultsRecordDTO);
 	}
 
+	//
 	public ArrayList<ResultsRecordDTO> getResults() {
-		return player.getResultsRecordsList();
+		//generar la lista a partir de Player
+		return results;
 	}
 
 	public Player getPlayer() {
@@ -36,7 +42,8 @@ public class GameController {
 	public String getPlayerName() {	return player.getName();}
 
 	public boolean playGame() {
-        boolean hasWon = player.addResult();
+        boolean hasWon = player.playGame();
+      //  player.addGame(player.getCurrentResult().getCurrentGame());//fixed add x2
 	    return hasWon;
 	}
 
@@ -49,3 +56,4 @@ public class GameController {
 	public int getRolledTimes(){ return player. getCurrentResult().getGames().size();}
 
 }
+
