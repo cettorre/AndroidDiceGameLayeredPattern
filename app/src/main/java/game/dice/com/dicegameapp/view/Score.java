@@ -42,15 +42,21 @@ public class Score extends AppCompatActivity {
 
                 //simplified passing methods to ResultRecord constructor
                 ResultsRecordDTO record=gameController.createRecord();
-                gameController.addRecordToList(record);//TODO
-                /*
-                * usar records que hay en player o dto
-                * añadirlo durante gameview
-                *
-                * */
+                gameController.addRecordToList(record);
 
                 gameController.resetGamesList();
                 Log.e("results_list",gameController.getResults().toString());
+
+
+              //TODO testing DB
+              SQLiteDatabase mDb = DbUtil.getDbConnection(getApplicationContext());
+              Cursor mCursor= DbUtil.getCursor(Score.this);
+              ContentValues cv = DbUtil.getContentValues();
+              cv.put(DbHelper.COL_PLAYER,"player2");
+
+              mCursor.moveToFirst();
+          //    Log.e("resulr_db",mCursor.getString(mCursor.getColumnIndexOrThrow(DbHelper.COL_PLAYER)));//index out of bounds
+
 
 
             }

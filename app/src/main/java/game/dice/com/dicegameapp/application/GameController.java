@@ -3,7 +3,8 @@ package game.dice.com.dicegameapp.application;
 import android.util.Log;
 import java.util.ArrayList;
 import game.dice.com.dicegameapp.application.dto.ResultsRecordDTO;
-import game.dice.com.dicegameapp.domain.*;
+import game.dice.com.dicegameapp.domain.Game;
+import game.dice.com.dicegameapp.domain.Player;
 
 
 public class GameController {
@@ -13,7 +14,7 @@ public class GameController {
 
 	private static Player player;
 	//TODO
-	//situar
+	//eliminar
 	private static ArrayList<ResultsRecordDTO> results=new ArrayList<>();
 
 	public ResultsRecordDTO createRecord(){
@@ -42,18 +43,26 @@ public class GameController {
 	public String getPlayerName() {	return player.getName();}
 
 	public boolean playGame() {
-        boolean hasWon = player.playGame();
-      //  player.addGame(player.getCurrentResult().getCurrentGame());//fixed add x2
+        boolean hasWon = player.rollDices();
+    //    player.addGame(player.getGame());
 	    return hasWon;
 	}
 
-	public int getDice1Value(){	return player.getCurrentResult().getCurrentGame().getDice1().getValue();}
+	public int getDice1Value(){	return player.getDice1Value();}
 
-	public int getDice2Value(){	return player.getCurrentResult().getCurrentGame().getDice2().getValue();}
+	public int getDice2Value(){	return player.getDice2Value();}
 
 	public void resetGamesList(){player.resetGamesList();}
 
-	public int getRolledTimes(){ return player. getCurrentResult().getGames().size();}
+	public int getRolledTimes(){ return player.getAllGames().size();}
+
+	public Game getIndexGame(int i){
+		return player.getAllGames().get(i);
+	}
+
+	public double getTotalAverage(){
+
+		return player.getFinalScore();
+	}
 
 }
-

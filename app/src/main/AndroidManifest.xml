@@ -19,7 +19,8 @@
         <activity android:name=".view.Dashboard" />
         <activity android:name=".view.GameView" />
         <activity android:name=".view.Score" />
-        <activity android:name=".view.Statistics"></activity>
+        <activity android:name=".view.Statistics" />
+        <activity android:name=".view.FinalScore"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package game.dice.com.dicegameapp.application.dto;
 
+import game.dice.com.dicegameapp.application.GameController;
 import game.dice.com.dicegameapp.domain.Player;
 
 public class ResultsRecordDTO {
